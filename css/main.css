@@ -1,0 +1,14 @@
+/* EduHub Web — điểm vào duy nhất của CSS.
+   Thứ tự @layer quyết định độ ưu tiên: lớp sau thắng lớp trước.
+   "theme" nằm cuối nên ghi đè được mọi thứ phía trước mà không cần !important. */
+@layer tokens, reset, base, layout, components, pages, theme;
+
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap");
+@import url("tokens.css") layer(tokens);
+@import url("base.css") layer(base);
+@import url("layout.css") layer(layout);
+@import url("components.css") layer(components);
+@import url("promo.css") layer(components);
+@import url("pages.css") layer(pages);
+@import url("dark.css") layer(theme);   /* xoá dòng này để quay lại giao diện sáng/tối tự động */
+/*@import url("glass.css") layer(theme);  /* kính mờ chi tiết cho CLB và hỏi đáp; phải nằm sau dark.css */

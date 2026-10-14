@@ -1,0 +1,154 @@
+/* Thành phần dùng lại: nút, thẻ, nhãn, bảng, form, FAQ */
+
+/* ---------- Nút ---------- */
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--space-3); margin: 0; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: 0.6rem 1.4rem;
+  border: 2px solid transparent; border-radius: var(--radius-m);
+  font: inherit; font-weight: 700; line-height: 1.2; text-decoration: none;
+  cursor: pointer; transition: background-color 0.15s, border-color 0.15s, transform 0.1s;
+}
+.btn:active { transform: translateY(1px); }
+.btn--primary { background: var(--btn-bg); color: var(--btn-text); }
+.btn--primary:hover { background: color-mix(in srgb, var(--btn-bg) 85%, white); }
+.btn--accent { background: var(--sun); color: var(--navy); }
+.btn--accent:hover { background: color-mix(in srgb, var(--sun) 85%, white); }
+.btn--ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
+.btn--ghost:hover { border-color: var(--text); background: var(--surface-2); }
+
+/* ---------- Nhãn ---------- */
+.tag {
+  display: inline-block; padding: 0.1rem 0.6rem;
+  background: var(--surface-2); color: var(--text);
+  border-radius: var(--radius-s); font-size: 0.875rem; font-weight: 600;
+}
+.badge {
+  display: inline-block; padding: 0.1rem 0.7rem; border-radius: 999px;
+  font-size: 0.8125rem; font-weight: 700;
+}
+.badge--hot { background: var(--lotus-soft); color: var(--lotus-ink); }
+
+/* ---------- Thẻ sự kiện ---------- */
+.card {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l);
+  transition: border-color 0.15s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--line-strong); box-shadow: var(--shadow-hover); }
+.card:has(a:focus-visible) { outline: 3px solid var(--link); outline-offset: 3px; }
+/* Sự kiện sắp hết chỗ có vạch hồng sen ở đầu thẻ */
+.card:has(.badge--hot) { box-shadow: inset 0 5px 0 var(--lotus); }
+.card:has(.badge--hot):hover { box-shadow: inset 0 5px 0 var(--lotus), var(--shadow-hover); }
+
+.card__media { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--surface-2); }
+.card__body { display: flex; flex-direction: column; flex: 1; padding: var(--space-4) var(--space-5) var(--space-5); }
+.card__meta { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; margin-block-end: var(--space-3); }
+.card__title { font-size: 1.15rem; margin-block-end: var(--space-2); }
+.card__title a { color: var(--text); text-decoration: none; }
+.card__title a::after { content: ""; position: absolute; inset: 0; } /* cả thẻ bấm được */
+.card__title a:hover { color: var(--link); text-decoration: underline; }
+.card__text { color: var(--muted); font-size: 0.9375rem; }
+.event-card__info { margin-block-end: var(--space-2); font-size: 0.9375rem; font-weight: 500; }
+.event-card__seats {
+  margin: auto 0 0; padding-block-start: var(--space-3);
+  border-block-start: 1px dashed var(--line);
+  font-weight: 700; color: var(--river);
+}
+.card:has(.badge--hot) .event-card__seats { color: var(--lotus-ink); }
+
+/* ---------- Thẻ câu lạc bộ ---------- */
+.club-card {
+  padding: var(--space-5); background: var(--surface);
+  border: 1px solid var(--line); border-inline-start: 5px solid var(--river);
+  border-radius: var(--radius-m);
+}
+.club-card h3 { margin-block-end: var(--space-2); }
+.club-card p { margin: 0; color: var(--muted); font-size: 0.9375rem; }
+
+/* ---------- Bảng ---------- */
+.table-wrap {
+  overflow-x: auto; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius-l);
+}
+.table { width: 100%; min-width: 46rem; border-collapse: collapse; font-size: 0.9375rem; }
+.table caption { caption-side: top; padding: var(--space-4) var(--space-5); text-align: start; font-weight: 700; }
+.table th, .table td { padding: 0.8rem var(--space-4); text-align: start; vertical-align: top; }
+.table thead th { background: var(--head-bg); color: #fff; font-weight: 600; white-space: nowrap; }
+.table tbody th { font-weight: 600; }
+.table tbody th a { color: var(--text); }
+.table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+.table tbody tr:hover { background: var(--surface-2); }
+.table tbody td:first-child { white-space: nowrap; }
+.table th:last-child, .table td:last-child { text-align: end; font-variant-numeric: tabular-nums; }
+.table tfoot td { padding: var(--space-4) var(--space-5); color: var(--muted); text-align: start; border-block-start: 1px solid var(--line); }
+
+/* ---------- Kêu gọi hành động ---------- */
+.cta {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--space-4) var(--space-5); padding: var(--space-5) var(--space-6);
+  background: var(--surface-2); border-inline-start: 6px solid var(--sun);
+  border-radius: var(--radius-l); font-weight: 600;
+}
+.cta p, .cta span { margin: 0; }
+
+/* ---------- Hỏi đáp ---------- */
+.faq { display: grid; gap: var(--space-3); max-width: 48rem; }
+.faq__item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-m); }
+.faq__item summary {
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+  padding: var(--space-4) var(--space-5); font-weight: 600; cursor: pointer; list-style: none;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "+"; flex: none; width: 1.75rem; height: 1.75rem; display: grid; place-items: center;
+  border-radius: 50%; background: var(--surface-2); font-size: 1.25rem; line-height: 1;
+}
+.faq__item[open] { border-color: var(--line-strong); }
+.faq__item[open] summary::after { content: "−"; background: var(--sun); color: var(--navy); }
+.faq__item p { margin: 0; padding: 0 var(--space-5) var(--space-5); color: var(--muted); }
+
+/* ---------- Form ---------- */
+.form fieldset {
+  margin: 0 0 var(--space-5); padding: var(--space-5);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l);
+}
+.form legend { padding-inline: var(--space-2); font-size: 1.1rem; font-weight: 700; }
+.form__grid { display: grid; gap: var(--space-4) var(--space-5); }
+@media (min-width: 40rem) {
+  .form__grid { grid-template-columns: 1fr 1fr; }
+  .field--full { grid-column: 1 / -1; }
+}
+.field { margin: 0 0 var(--space-4); }
+.form__grid .field { margin: 0; }
+.field label { display: block; margin-block-end: var(--space-1); font-weight: 600; }
+.field small { display: block; margin-block-start: var(--space-1); }
+
+.form input:not([type="radio"], [type="checkbox"]),
+.form select,
+.form textarea {
+  width: 100%; min-height: 3rem; padding: 0.6rem 0.85rem;
+  font: inherit; color: var(--text); background: var(--bg);
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-m);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.form textarea { resize: vertical; min-height: 7rem; }
+.form input:hover, .form select:hover, .form textarea:hover { border-color: var(--text); }
+.form input:focus, .form select:focus, .form textarea:focus { background: var(--surface); border-color: var(--link); outline: 3px solid color-mix(in srgb, var(--link) 35%, transparent); outline-offset: 0; }
+.form input:user-invalid, .form select:user-invalid, .form textarea:user-invalid { border-color: var(--danger); }
+
+.choice-group { margin: var(--space-4) 0; padding: 0 !important; border: 0 !important; background: none !important; }
+.choice-group legend { padding: 0; font-size: 1rem; margin-block-end: var(--space-2); }
+.choice-group__options { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.choice {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  padding: 0.5rem 1rem; background: var(--bg);
+  border: 1.5px solid var(--line-strong); border-radius: 999px; cursor: pointer; font-weight: 500;
+}
+.choice:hover { border-color: var(--text); }
+.choice:has(input:checked) { background: var(--nav-current-bg); border-color: var(--link); font-weight: 700; }
+.choice:has(input:focus-visible) { outline: 3px solid var(--link); outline-offset: 2px; }
+.choice input, .field--check input { accent-color: var(--lotus); width: 1.15rem; height: 1.15rem; margin: 0; }
+
+.field--check { display: flex; align-items: flex-start; gap: var(--space-3); margin: 0 0 var(--space-5); }
+.field--check input { flex: none; margin-block-start: 0.25rem; }

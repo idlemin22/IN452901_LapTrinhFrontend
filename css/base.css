@@ -1,0 +1,60 @@
+/* Reset nhẹ + kiểu chữ nền */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 5rem; /* chừa chỗ cho header dính khi nhảy tới #neo */
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+main { flex: 1 0 auto; padding-block-end: var(--space-8); }
+
+/* Tiếng Việt chồng dấu nên dòng tiêu đề cần cao hơn bình thường */
+h1, h2, h3 { margin: 0 0 var(--space-3); line-height: 1.25; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem); font-weight: 800; letter-spacing: -0.025em; }
+h2 { font-size: clamp(1.5rem, 1.25rem + 1.1vw, 2rem); font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 700; }
+p { margin: 0 0 var(--space-4); text-wrap: pretty; }
+
+a { color: var(--link); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+
+img, svg { display: block; max-width: 100%; height: auto; }
+ul, ol { margin: 0; padding-inline-start: 1.25rem; }
+small { font-size: 0.875rem; color: var(--muted); }
+abbr[title] { text-decoration: none; color: var(--lotus-ink); cursor: help; }
+time { font-variant-numeric: tabular-nums; }
+::selection { background: var(--sun); color: var(--navy); }
+
+:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+
+/* Liên kết "Bỏ qua" cho người dùng bàn phím */
+.skip-link {
+  position: absolute; left: var(--space-4); top: -4rem; z-index: 100;
+  padding: var(--space-3) var(--space-4);
+  background: var(--sun); color: var(--navy); font-weight: 700;
+  border-radius: var(--radius-m); text-decoration: none;
+}
+.skip-link:focus { top: var(--space-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
